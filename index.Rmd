@@ -1,7 +1,7 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
-date: "`r Sys.Date()`"
+title: "COVID Visualization Project"
+author: "Andy Cho, Ardus Kong, Xuanhao Wu"
+date: "2020-11-22"
 site: bookdown::bookdown_site
 ---
 
