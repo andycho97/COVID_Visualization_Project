@@ -1,1 +1,3 @@
 # Data transformation
+
+The data comes for the most part in a format that is ready to make. We intend to transform some variables into factor variables and create new grouping variables based off of continous variables. For example, we will segment states based on positive tests into "high", "med", "low". In addition, we will do that for death counts. We will then create factors out of these variables. Most of the variables are already in a useable format and we do not need to transform too much.
