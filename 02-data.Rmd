@@ -3,9 +3,48 @@
 ```{r}
 library(data.table)
 file_directory <- "C:/Users/wkong/Desktop/Columbia/STAT 5702 Exploratory Data Analysis/Final Project"
-file_name <- "all-states-history.csv"
+file_name <- "daily_us.csv"
 data_file <- file.path(file_directory, file_name)
-df <- fread(data_file)
+df_us <- fread(data_file)
+
+file_name <- "daily_state.csv"
+data_file <- file.path(file_directory, file_name)
+df_state <- fread(data_file)
 ```
 
-# Test!!!
+```{r}
+library(dplyr)
+library(tidyr)
+df_state <- df_state %>% mutate(date = as.Date(as.character(df_state$date), "%Y%m%d"))
+
+
+df_state %>% mutate(diff = total - positive - negative, indicator = diff !=0) %>% filter(indicator == FALSE) %>% select(diff) %>% table
+df_state %>% filter( is.na(totalTestResults))
+
+December <- df_state %>% filter(date == as.Date('20201211', '%Y%m%d'))
+temp <- December %>% mutate(positivity_rate = positive / totalTestResults) %>% 
+  select(state, positive, positiveIncrease, positivity_rate, deathConfirmed)
+parcoords(temp, brushMode = "1d-axes", reorderable = TRUE, rownames = FALSE)
+```
+
+```{r}
+library(fivethirtyeight)
+library(parcoords)
+
+parcoords(pulitzer, brushMode = "1d-axes", reorderable = TRUE, rownames = FALSE)
+
+parcoords(temp, )
+```
+
+```{r}
+library(ggplot2)
+p <- ggplot(data = df_us, aes(date, positive))
+p + geom_line()
+```
+
+```{r}
+df_us <- df_us %>% mutate(positivity = positiveIncrease / totalTestResultsIncrease)
+p <- ggplot(data = df_us, aes(date, positivity))
+p + geom_line()
+```
+
