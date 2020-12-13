@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Missing values | YOUR TITLE HERE</title>
-  <meta name="description" content="Chapter 4 Missing values | YOUR TITLE HERE" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <title>Chapter 4 Missing values | COVID Visualization Project</title>
+  <meta name="description" content="This project is by Andy, Andus, and Xuanhao" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Missing values | YOUR TITLE HERE" />
+  <meta property="og:title" content="Chapter 4 Missing values | COVID Visualization Project" />
   <meta property="og:type" content="book" />
   
   
-  
-  
+  <meta property="og:description" content="This project is by Andy, Andus, and Xuanhao" />
+  <meta name="github-repo" content="andycho97/COVID_Visualization_Project" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Missing values | YOUR TITLE HERE" />
+  <meta name="twitter:title" content="Chapter 4 Missing values | COVID Visualization Project" />
   
-  
+  <meta name="twitter:description" content="This project is by Andy, Andus, and Xuanhao" />
   
 
-<meta name="author" content="YOUR NAMES HERE" />
+<meta name="author" content="Andy Cho, Ardus Kong, Xuanhao Wu" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2020-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="data-transformation.html"/>
 <link rel="next" href="results.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,6 +51,9 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/parallel-coordinates-2.1.8/parcoords.css" rel="stylesheet" />
+<script src="libs/parcoords-binding-1.0.0/parcoords.js"></script>
 
 
 
@@ -89,7 +91,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YOUR TITLE HERE</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">COVID Visualization Project</a>
           </h1>
         </div>
 
@@ -97,8 +99,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="missing-values" class="section level1" number="4">
+<div id="missing-values" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Missing values</h1>
+<pre><code>## NOTE: In the following pairs of variables, the missingness pattern of the second is a subset of the first.
+##  Please verify whether they are in fact logically distinct variables.
+##       [,1]                     [,2]                
+##  [1,] &quot;probableCases&quot;          &quot;totalTestResults&quot;  
+##  [2,] &quot;probableCases&quot;          &quot;positiveCasesViral&quot;
+##  [3,] &quot;hospitalizedCurrently&quot;  &quot;lastUpdateEt&quot;      
+##  [4,] &quot;inIcuCurrently&quot;         &quot;lastUpdateEt&quot;      
+##  [5,] &quot;inIcuCumulative&quot;        &quot;dataQualityGrade&quot;  
+##  [6,] &quot;inIcuCumulative&quot;        &quot;lastUpdateEt&quot;      
+##  [7,] &quot;inIcuCumulative&quot;        &quot;death&quot;             
+##  [8,] &quot;onVentilatorCurrently&quot;  &quot;lastUpdateEt&quot;      
+##  [9,] &quot;onVentilatorCumulative&quot; &quot;dataQualityGrade&quot;  
+## [10,] &quot;onVentilatorCumulative&quot; &quot;lastUpdateEt&quot;      
+## [11,] &quot;onVentilatorCumulative&quot; &quot;death&quot;             
+## [12,] &quot;recovered&quot;              &quot;lastUpdateEt&quot;      
+## [13,] &quot;dataQualityGrade&quot;       &quot;lastUpdateEt&quot;</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>If we sort the graph by row, it is clear that almost every state in some days has missing values in different variables. Most missing pattern does not differ a lot in type and number variables. If we sort the graph by colum, the variable with the highest number of missing values is ‘totalTestPeopleAntigen’. Additionally, it’s not hard to see that the variables associated with the number of individuals of positive and negative results of different tests have a large number of missing values. Most categorical variables such as “fips” and “dataQualityGrade” does not have missing values. If we sort the graph by both column and row, the distribution of the length of missing pattern becomes approximately uniform. The general shape becomes flatter.</p>
 
 </div>
             </section>
@@ -138,7 +158,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/edit/main/04-missing.Rmd",
+"link": "https://github.com/andycho97/COVID_Visualization_Project/edit/main/04-missing.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -146,7 +166,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/YOUR GITHUB USERNAME/YOUR REPO NAME/blob/main/04-missing.Rmd",
+"link": "https://github.com/andycho97/COVID_Visualization_Project/blob/main/04-missing.Rmd",
 "text": null
 },
 "download": null,

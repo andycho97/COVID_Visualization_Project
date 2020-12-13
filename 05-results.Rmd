@@ -5,11 +5,9 @@
 # Load Libraries
 library(dplyr)
 library(tidyr)
-```
 
-```{r}
-df <- df %>% mutate(month = month(date),
-              year = year(date),
-              day = mday(date))
+# df <- df %>% mutate(month = month(date),
+#               year = year(date),
+#               day = mday(date))
 ```
 

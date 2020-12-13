@@ -7,8 +7,6 @@ github-repo: andycho97/COVID_Visualization_Project
 description: "This project is by Andy, Andus, and Xuanhao"
 ---
 
-
 # Introduction
 
 Sample text here
-
