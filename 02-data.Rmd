@@ -6,6 +6,7 @@ file_directory <- "C:/Users/wkong/Desktop/Columbia/STAT 5702 Exploratory Data An
 file_name <- "daily_us.csv"
 data_file <- file.path(file_directory, file_name)
 df_us <- fread(data_file)
+df_us <- df_us %>% mutate(date = as.Date(as.character(date), '%Y%m%d'))
 
 file_name <- "daily_state.csv"
 data_file <- file.path(file_directory, file_name)
@@ -16,6 +17,15 @@ df_state <- fread(data_file)
 library(dplyr)
 library(tidyr)
 df_state <- df_state %>% mutate(date = as.Date(as.character(df_state$date), "%Y%m%d"))
+temp2 <- df_state %>% mutate(region = case_when(
+  state %in% c("ME", "MA", "RI", "CT", "NH", "VT", "NY", "PA", "NJ", "DE", "MD", "DC") ~ "Northeast",
+  state %in% c("WV", "VA", "KY", "TN", "NC", "SC", "GA", "AL", "MS", "AR", "LA", "FL") ~ "Southeast",
+  state %in% c("OH", "IN", "MI", "IL", "MO", "WI", "MN", "IA", "KS", "NE", "SD", "ND") ~ "Midwest",
+  state %in% c("TX", "OK", "NM", "AZ") ~ "Southwest",
+  state %in% c("CO", "WY", "MT", "ID", "WA", "OR", "UT", "NV", "CA", "AK", "HI") ~ "West",
+  TRUE ~ "Territories")
+)
+
 
 
 df_state %>% mutate(diff = total - positive - negative, indicator = diff !=0) %>% filter(indicator == FALSE) %>% select(diff) %>% table
@@ -38,13 +48,33 @@ parcoords(temp, )
 
 ```{r}
 library(ggplot2)
-p <- ggplot(data = df_us, aes(date, positive))
-p + geom_line()
+p <- ggplot(data = df_us, aes(date, positiveIncrease))
+p + geom_line(size = 1, color = 'blue') + theme_light()
 ```
 
 ```{r}
 df_us <- df_us %>% mutate(positivity = positiveIncrease / totalTestResultsIncrease)
 p <- ggplot(data = df_us, aes(date, positivity))
 p + geom_line()
+```
+
+```{r}
+p <- ggplot(data = df_state %>% filter(state == 'WA'), aes(date, positiveIncrease))
+p + geom_line(size = 1, color = 'blue') + theme_light()
+```
+
+```{r}
+file_name <- "SCPRC-EST2019-18+POP-RES.csv"
+data_file <- file.path(file_directory, file_name)
+state_pop <- fread(data_file)
+state_to_abb <- data.frame(datasets::state.abb, datasets::state.name)
+temp3 <- merge(state_pop, state_to_abb,by.x = "NAME", by.y = "datasets..state.name")
+temp4 <- merge(temp2, temp3, by.x = "state", by.y = "datasets..state.abb")
+regions <- temp4 %>% mutate(positivity = positiveIncrease / totalTestResultsIncrease,
+                 positiveIncrease_per_capita = positiveIncrease / POPESTIMATE2019) %>%
+  select(state, region, positivity, positiveIncrease, positiveIncrease_per_capita, date)
+
+p <- ggplot(data = regions %>% filter(!is.na(positivity)), aes(x = positivity,y = positiveIncrease_per_capita, col = region))
+p + geom_point(alpha = .2, stroke = 0, na.rm = TRUE)+geom_density_2d(lwd = 0.5)+theme_classic()
 ```
 
