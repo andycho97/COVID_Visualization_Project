@@ -2,7 +2,7 @@
 title: "COVID Visualization Project"
 author: "Andy Cho, Ardus Kong, Xuanhao Wu"
 date: "2020-11-22"
-site: bookdown::bookdown_site
+site: https://andycho97.github.io/COVID_Visualization_Project/
 ---
 
 # Introduction
