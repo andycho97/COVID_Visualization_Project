@@ -7,5 +7,3 @@ file_name <- "all-states-history.csv"
 data_file <- file.path(file_directory, file_name)
 df <- fread(data_file)
 ```
-
-# Test!!!
