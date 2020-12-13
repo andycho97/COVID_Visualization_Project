@@ -1,1 +1,25 @@
 # Missing values
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(mi)
+library(extracat)
+```
+```{r, warning = FALSE}
+statedata <- read.csv("C:/Users/wuxua/Desktop/5702W/daily.csv")
+statedata <- as.data.frame(statedata)
+statedata2 <- select(statedata, -c("checkTimeEt", "commercialScore", "dateChecked", "dateModified", "grade", "hash", "hospitalized", "negativeIncrease", "negativeRegularScore", "negativeScore", "posNeg", "positiveScore", "score", "total"))
+x <- missing_data.frame(statedata2)
+image(x)
+```
+
+```{r, warning = FALSE, message = FALSE}
+show(x)
+extracat::visna(statedata2, sort = "r")
+extracat::visna(statedata2, sort = "c")
+extracat::visna(statedata2, sort = "b")
+```
+
+If we sort the graph by row, it is clear that almost every state in some days has missing values in different variables. Most missing pattern does not differ a lot in type and number variables. If we sort the graph by colum, the variable with the highest number of missing values is 'totalTestPeopleAntigen'. Additionally, it's not hard to see that the variables associated with the number of individuals of positive and negative results of different tests have a large number of missing values. Most categorical variables such as "fips" and "dataQualityGrade" does not have missing values. If we sort the graph by both column and row, the distribution of the length of missing pattern becomes approximately uniform. The general shape becomes flatter.
