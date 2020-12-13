@@ -5,6 +5,7 @@ library(data.table)
 file_directory <- "C:/Users/wkong/Desktop/Columbia/STAT 5702 Exploratory Data Analysis/Final Project"
 file_name <- "daily_us.csv"
 data_file <- file.path(file_directory, file_name)
+
 df_us <- fread(data_file)
 df_us <- df_us %>% mutate(date = as.Date(as.character(date), '%Y%m%d'))
 
@@ -77,4 +78,3 @@ regions <- temp4 %>% mutate(positivity = positiveIncrease / totalTestResultsIncr
 p <- ggplot(data = regions %>% filter(!is.na(positivity)), aes(x = positivity,y = positiveIncrease_per_capita, col = region))
 p + geom_point(alpha = .2, stroke = 0, na.rm = TRUE)+geom_density_2d(lwd = 0.5)+theme_classic()
 ```
-
