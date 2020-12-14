@@ -36,12 +36,14 @@ temp2 <- df_state %>% mutate(region = case_when(
   state %in% c("CO", "WY", "MT", "ID", "WA", "OR", "UT", "NV", "CA", "AK", "HI") ~ "West",
   TRUE ~ "Territories")
 )
+```
 
-
-
+```{r, eval=FALSE}
 df_state %>% mutate(diff = total - positive - negative, indicator = diff !=0) %>% filter(indicator == FALSE) %>% select(diff) %>% table
 df_state %>% filter( is.na(totalTestResults))
+```
 
+```{r, eval=FALSE}
 December <- df_state %>% filter(date == as.Date('20201211', '%Y%m%d'))
 temp <- December %>% mutate(positivity_rate = positive / totalTestResults) %>% 
   select(state, positive, positiveIncrease, positivity_rate, deathConfirmed)
@@ -49,12 +51,7 @@ parcoords(temp, brushMode = "1d-axes", reorderable = TRUE, rownames = FALSE)
 ```
 
 ```{r}
-library(fivethirtyeight)
-library(parcoords)
-
-parcoords(pulitzer, brushMode = "1d-axes", reorderable = TRUE, rownames = FALSE)
-
-parcoords(temp, )
+parcoords(temp)
 ```
 
 ```{r}

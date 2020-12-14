@@ -9,4 +9,10 @@ description: "This project is by Andy, Andus, and Xuanhao"
 
 # Introduction
 
-Sample text here
+We wanted to answer some of these questions:
+
+What are some major COVID-19 patterns (cases and deaths) in the US, in relation to major domestic events?
+
+What are some major COVID-19 Patterns (cases and deaths) when stratified by states/regions, and if necessary, specific counties of the state?
+
+What are some patterns that can signal a major upcoming wave? (e.g. if we see a steady growth in cases/deaths for x consecutive days, does that tell us a bigger picture about the state of COVID-19 in the US or a specific state?)

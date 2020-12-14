@@ -1,13 +1,134 @@
 # Results
 
-
 ```{r}
-# Load Libraries
-library(dplyr)
-library(tidyr)
 
-# df <- df %>% mutate(month = month(date),
-#               year = year(date),
-#               day = mday(date))
+## Visualizations US
+
+## Visualizations State level
+
+# Load state level data
+daily_state <- read_csv("daily_state.csv", col_types = cols(date = col_date(format = "%Y%m%d")))
+
+# Load states with some of the highest number of reported cases
+california <- daily_state[daily_state$state == 'CA',]
+california <- california[order(california$date),]
+california$positiveRate <- california$positiveIncrease / california$totalTestResultsIncrease
+
+florida <- daily_state[daily_state$state == 'FL',]
+florida <- florida[order(florida$date),]
+florida$positiveRate <- florida$positiveIncrease / florida$totalTestResultsIncrease
+
+texas <- daily_state[daily_state$state == 'TX',]
+texas <- texas[order(texas$date),]
+texas$positiveRate <- texas$positiveIncrease / texas$totalTestResultsIncrease
+
+illinois <- daily_state[daily_state$state == 'IL',]
+illinois <- illinois[order(illinois$date),]
+illinois$positiveRate <- illinois$positiveIncrease / illinois$totalTestResultsIncrease
+
+newyork <- daily_state[daily_state$state == 'NY',]
+newyork <- newyork[order(newyork$date),]
+newyork$positiveRate <- newyork$positiveIncrease / newyork$totalTestResultsIncrease
+
+newjersey <- daily_state[daily_state$state == 'NJ',]
+newjersey <- newjersey[order(newjersey$date),]
+newjersey$positiveRate <- newjersey$positiveIncrease / newjersey$totalTestResultsIncrease
+
+# Clean data for Texas
+texas$totalTestResultsIncrease[texas$totalTestResultsIncrease<0] <- 0
+
+# Add 7 day averages
+library(zoo)
+california$positiveIncrease_7 <- rollmean(california$positiveIncrease, k=7, fill=NA)
+california$totalTestResultsIncrease_7 <- rollmean(california$totalTestResultsIncrease, k=7, fill=NA)
+
+florida$positiveIncrease_7 <- rollmean(florida$positiveIncrease, k=7, fill=NA)
+florida$totalTestResultsIncrease_7 <- rollmean(florida$totalTestResultsIncrease, k=7, fill=NA)
+
+texas$positiveIncrease_7 <- rollmean(texas$positiveIncrease, k=7, fill=NA)
+texas$totalTestResultsIncrease_7 <- rollmean(texas$totalTestResultsIncrease, k=7, fill=NA)
+
+illinois$positiveIncrease_7 <- rollmean(illinois$positiveIncrease, k=7, fill=NA)
+illinois$totalTestResultsIncrease_7 <- rollmean(illinois$totalTestResultsIncrease, k=7, fill=NA)
+
+newyork$positiveIncrease_7 <- rollmean(newyork$positiveIncrease, k=7, fill=NA)
+newyork$totalTestResultsIncrease_7 <- rollmean(newyork$totalTestResultsIncrease, k=7, fill=NA)
+
+newjersey$positiveIncrease_7 <- rollmean(newjersey$positiveIncrease, k=7, fill=NA)
+newjersey$totalTestResultsIncrease_7 <- rollmean(newjersey$totalTestResultsIncrease, k=7, fill=NA)
+
+# plot(california$date, california$totalTestResultsIncrease)
+# plot(florida$date, florida$totalTestResultsIncrease)
+# plot(texas$date, texas$totalTestResultsIncrease)
+# plot(illinois$date, illinois$totalTestResultsIncrease)
+# plot(newyork$date, newyork$totalTestResultsIncrease)
+
+
+# California
+ggplot(california, aes(x = date)) + 
+  geom_line(aes(y = totalTestResultsIncrease_7, colour = "Total Tests")) + 
+    geom_line(aes(y = positiveIncrease_7*10, colour = "Positive Cases")) +
+
+      scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) +
+      scale_colour_manual(values = c("blue", "red")) + 
+      labs(y = "Total Tests", x = "Date", colour = "Lines") +
+      theme(legend.position = c(0.2, 0.8)) +
+      ggtitle("COVID in California (7-Day Average)")
+
+# Florida
+ggplot(florida, aes(x = date)) + 
+  geom_line(aes(y = totalTestResultsIncrease_7, colour = "Total Tests")) + 
+  geom_line(aes(y = positiveIncrease_7*10, colour = "Positive Cases")) +
+  
+  scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) +
+  scale_colour_manual(values = c("blue", "red")) + 
+  labs(y = "Total Tests", x = "Date", colour = "Lines") +
+  theme(legend.position = c(0.2, 0.8)) +
+  ggtitle("COVID in Florida (7-Day Average)")
+
+# Texas
+ggplot(texas, aes(x = date)) + 
+  geom_line(aes(y = totalTestResultsIncrease_7, colour = "Total Tests")) + 
+  geom_line(aes(y = positiveIncrease_7*10, colour = "Positive Cases")) +
+  
+  scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) +
+  scale_colour_manual(values = c("blue", "red")) + 
+  labs(y = "Total Tests", x = "Date", colour = "Lines") +
+  theme(legend.position = c(0.2, 0.8)) +
+  ggtitle("COVID in Texas (7-Day Average)")
+
+# Illinois
+ggplot(illinois, aes(x = date)) + 
+  geom_line(aes(y = totalTestResultsIncrease_7, colour = "Total Tests")) + 
+  geom_line(aes(y = positiveIncrease_7*10, colour = "Positive Cases")) +
+  
+  scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) +
+  scale_colour_manual(values = c("blue", "red")) + 
+  labs(y = "Total Tests", x = "Date", colour = "Lines") +
+  theme(legend.position = c(0.2, 0.8)) +
+  ggtitle("COVID in Illinois (7-Day Average)")
+
+# New York
+ggplot(newyork, aes(x = date)) + 
+  geom_line(aes(y = totalTestResultsIncrease_7, colour = "Total Tests")) + 
+  geom_line(aes(y = positiveIncrease_7*10, colour = "Positive Cases")) +
+  
+  scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) +
+  scale_colour_manual(values = c("blue", "red")) + 
+  labs(y = "Total Tests", x = "Date", colour = "Lines") +
+  theme(legend.position = c(0.2, 0.8)) +
+  ggtitle("COVID in New York (7-Day Average)")
+
+# New Jersey
+ggplot(newjersey, aes(x = date)) + 
+  geom_line(aes(y = totalTestResultsIncrease_7, colour = "Total Tests")) + 
+  geom_line(aes(y = positiveIncrease_7*10, colour = "Positive Cases")) +
+  
+  scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) +
+  scale_colour_manual(values = c("blue", "red")) + 
+  labs(y = "Total Tests", x = "Date", colour = "Lines") +
+  theme(legend.position = c(0.2, 0.8)) +
+  ggtitle("COVID in New Jersey (7-Day Average)")
+
 ```
 
