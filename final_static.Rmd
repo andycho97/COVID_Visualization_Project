@@ -1,0 +1,110 @@
+
+---
+title: "temp"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(parcoords)
+library(lubridate)
+```
+
+
+```{r, warning = FALSE}
+statedata <- read.csv("C:/Users/wuxua/Desktop/5702W/daily.csv")
+usdata <- read.csv("C:/Users/wuxua/Desktop/5702W/us_daily.csv")
+statedata <- as.data.frame(statedata)
+statedata_total <- select(statedata, -c("checkTimeEt", "commercialScore", "dateChecked", "dateModified", "grade", "hash", "hospitalized", "negativeIncrease", "negativeRegularScore", "negativeScore", "posNeg", "positiveScore", "score", "total"))
+
+state_positive_data <- select(statedata, c("date", "state", "positive", "positiveIncrease"))
+statedata_analysis1 <- subset(state_positive_data, date == state_positive_data$date[1])
+
+
+```
+
+```{r}
+ggplot(statedata_analysis1, aes(x = positive, fct_reorder(state, positive))) +
+  geom_point(color = "blue") +
+  xlab("Confirmed plus probable positive cases of Covid-19") +
+  ylab("State") +
+  theme_grey(12)
+```
+
+
+
+
+```{r}
+
+state_data_thanksgiving <- state_positive_data %>% filter(date <= 20201130 & date >= 20201123)
+state_data_tg_day <- state_positive_data %>% filter(date == 20201127)
+top_5_states <- (state_data_tg_day[order(-state_data_tg_day$positive), ] %>% top_n(n = 5, wt = positive))$state
+statedata_analysis2 <- state_data_thanksgiving %>% filter(state %in% top_5_states)
+statedata_analysis2$state <- fct_relevel(statedata_analysis2$state, top_5_states)
+statedata_analysis2
+```
+
+
+```{r}
+ggplot(statedata_analysis2, aes(as.Date(as.character(date), "%Y%m%d"), positiveIncrease)) +
+  geom_line(color = "red") +
+  geom_point(color = "red") +
+  facet_wrap(~state, nrow = 1) +
+  scale_x_date(date_labels ="%b\n%d",date_breaks ="1 day") +
+  ggtitle("Thanksgiving week daily increase of states with top 5 total positive cases on Black Friday") +
+  xlab("Date") +
+  ylab("Daily cases") +
+  theme_grey(13)
+```
+
+
+
+```{r}
+us_data_analysis <- usdata %>% select(c("date", "positive", "positiveIncrease", "death")) %>%
+                    filter(date <= 20201114 & date >= 20201025) %>% 
+                    mutate(weektype = ifelse(date<= 20201114 & date >= 20201108, "next week", ifelse(date <= 20201107 & date                     >= 20201101, "election week", "previous week")))%>%
+                    mutate(weekday = wday(ymd(date)) - 1)
+us_data_analysis
+```
+
+
+```{r}
+ggplot(us_data_analysis, aes(weekday, positiveIncrease, color = fct_reorder2(weektype, weekday, positiveIncrease))) +
+  geom_line() +
+  geom_point() +
+  #scale_x_date(date_labels ="%a",date_breaks ="1 day") +
+  ggtitle("Thanksgiving week daily increase of states with top 5 total positive cases on Black Friday") +
+  xlab("Weekday") +
+  ylab("Daily cases") +
+  labs(color = "week") +
+  theme_grey(13)
+```
