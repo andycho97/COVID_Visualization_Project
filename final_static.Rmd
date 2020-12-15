@@ -59,7 +59,7 @@ ggplot(statedata_analysis1, aes(x = positive, fct_reorder(state, positive))) +
   ylab("State") +
   theme_grey(12)
 ```
-
+From the graph, we could see California has the largest number of total positive cases. The states CA, TX, FL, IL, and NY's number of total cases are way larger than other states.
 
 
 
@@ -80,31 +80,36 @@ ggplot(statedata_analysis2, aes(as.Date(as.character(date), "%Y%m%d"), positiveI
   geom_point(color = "red") +
   facet_wrap(~state, nrow = 1) +
   scale_x_date(date_labels ="%b\n%d",date_breaks ="1 day") +
-  ggtitle("Thanksgiving week daily increase of states with top 5 total positive cases on Black Friday") +
+  ggtitle("Thanksgiving week daily increase of states with top 5 total positive cases on Black Friday, Nov 27(in descending order)") +
   xlab("Date") +
   ylab("Daily cases") +
   theme_grey(13)
 ```
-
+Although CA has the largest number of total positive cases on Black Friday, the daily increase of it on that day is relatively low in Thanksgiving week. It is not surprising  to see that Florida has a guge increase on Black Friday compared to day before. New York state also has the highest amount of daily cases on that day. What not intuitive is that California, Texas, and Illinois all have relatively small number of new cases on Black Friday compared with other days in Thanksgiving week.
 
 
 ```{r}
 us_data_analysis <- usdata %>% select(c("date", "positive", "positiveIncrease", "death")) %>%
                     filter(date <= 20201114 & date >= 20201025) %>% 
                     mutate(weektype = ifelse(date<= 20201114 & date >= 20201108, "next week", ifelse(date <= 20201107 & date                     >= 20201101, "election week", "previous week")))%>%
-                    mutate(weekday = wday(ymd(date)) - 1)
+                    mutate(weekday = wday(ymd(date), label = TRUE))
 us_data_analysis
 ```
 
 
 ```{r}
-ggplot(us_data_analysis, aes(weekday, positiveIncrease, color = fct_reorder2(weektype, weekday, positiveIncrease))) +
-  geom_line() +
+ggplot(us_data_analysis, aes(weekday, positiveIncrease, color = fct_reorder2(weektype, weekday, positiveIncrease), group= weektype)) +
+  #geom_line() +
   geom_point() +
+  stat_summary(fun =sum, geom="line") +
   #scale_x_date(date_labels ="%a",date_breaks ="1 day") +
-  ggtitle("Thanksgiving week daily increase of states with top 5 total positive cases on Black Friday") +
+  ggtitle("Daily cases of the week before election, election week and week after election") +
   xlab("Weekday") +
   ylab("Daily cases") +
   labs(color = "week") +
   theme_grey(13)
 ```
+Based on this graph, what surprising is that the election week does not have the largest daily increase but the week after has. This may because the election result causes the people who support Trump to gather more and protest for recounting in some states, which highly increases the chance of close contact and the risk of infection.
+
+
+
