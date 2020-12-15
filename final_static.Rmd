@@ -4,32 +4,6 @@ title: "temp"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
-
 
 ```{r}
 library(tidyverse)
@@ -41,8 +15,8 @@ library(lubridate)
 
 
 ```{r, warning = FALSE}
-statedata <- read.csv("C:/Users/wuxua/Desktop/5702W/daily.csv")
-usdata <- read.csv("C:/Users/wuxua/Desktop/5702W/us_daily.csv")
+statedata <- read.csv("daily_state.csv")
+usdata <- read.csv("daily_us.csv")
 statedata <- as.data.frame(statedata)
 statedata_total <- select(statedata, -c("checkTimeEt", "commercialScore", "dateChecked", "dateModified", "grade", "hash", "hospitalized", "negativeIncrease", "negativeRegularScore", "negativeScore", "posNeg", "positiveScore", "score", "total"))
 
@@ -64,7 +38,6 @@ ggplot(statedata_analysis1, aes(x = positive, fct_reorder(state, positive))) +
 
 
 ```{r}
-
 state_data_thanksgiving <- state_positive_data %>% filter(date <= 20201130 & date >= 20201123)
 state_data_tg_day <- state_positive_data %>% filter(date == 20201127)
 top_5_states <- (state_data_tg_day[order(-state_data_tg_day$positive), ] %>% top_n(n = 5, wt = positive))$state
