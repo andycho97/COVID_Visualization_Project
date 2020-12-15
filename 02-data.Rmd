@@ -50,9 +50,6 @@ temp <- December %>% mutate(positivity_rate = positive / totalTestResults) %>%
 parcoords(temp, brushMode = "1d-axes", reorderable = TRUE, rownames = FALSE)
 ```
 
-```{r}
-parcoords(temp)
-```
 
 ```{r}
 library(ggplot2)
@@ -69,6 +66,16 @@ p + geom_line()
 ```{r}
 p <- ggplot(data = df_state %>% filter(state == 'WA'), aes(date, positiveIncrease))
 p + geom_line(size = 1, color = 'blue') + theme_light()
+```
+
+```{r}
+Statesabb <- unique(df_state$state)
+for(i in 1:length(Statesabb)){
+  p <- ggplot(data = df_state %>% filter(state == Statesabb[i]), aes(date, positiveIncrease))
+  print(p + geom_line(size = 1, color = 'blue') + theme_light() + labs(title = Statesabb[i]) + geom_vline(xintercept = as.numeric(as.Date("2020-11-25")), col = "red", size = 2))
+}
+p <- ggplot(data = df_state %>% filter(!(state %in% c("AS", "MP", "PR")), positiveIncrease >= 0) , aes(date, positiveIncrease))
+p + geom_line(size = 1, color = 'blue') + theme_light() + labs(title = Statesabb[i]) + geom_vline(xintercept = as.numeric(as.Date("2020-11-25")), col = "red", size = 2) + facet_wrap(~state, scales = "free")
 ```
 
 ```{r}
