@@ -1,6 +1,22 @@
 # Results
 
-We will focus more on the individual state-level trends. When we plot the number of confirmed and probable cases of COVID-19 in each state, we can easily see that the top states in the "high" category are California, Texas, Florida, Illinois, and New York. We quickly note that these states represent different parts of the US - West Coast, South, Southeast, Midwest, and East Coast, and COVID was widespread throughout the country.
+We started by looking at how United States was doing as a whole to get an idea of the bigger picture effects of CVOID-19 among all states. Below is a quick snapshot of how the states were performing. As the data suggests almost every state is exhibiting an exponential trend in daily new positive tests reaching its all time highs within the last month with a few exceptions like Hawaii, Iowa, and North Dakota. As we will discuss later in the results, this dramatic increase can be attributed to many factors such as higher testing rate, holidays, lax in public cautiousness, and increased travel. Indeed the data trends prove alarming and depict a drastic shift in COVID-19's impact on American lives. We may and have already seen changes in public policy across states. For example, NY has reverted some of the allowances of public interaction like indoor dining. California as well has issued shelter at home laws.   
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(data.table)
+library(readr)
+library(ggplot2)
+daily_state <- read_csv("daily_state.csv", col_types = cols(date = col_date(format = "%Y%m%d")))
+```
+
+```{r}
+p <- ggplot(data = daily_state %>% filter(!(state %in% c("AS", "PR", "GU", "MP")), positiveIncrease >= 0), aes(date, positiveIncrease))
+p + geom_line(col = "blue") + facet_wrap(~state, scales = "free") + labs(ylab = "Daily Positive Tests")
+```
+
+Now that we quantitativly established that the country as a whole has greatly been affected by COVID-19, we will focus more on the individual state-level trends. When we plot the number of confirmed and probable cases of COVID-19 in each state, we can easily see that the top states in the "high" category are California, Texas, Florida, Illinois, and New York. We quickly note that these states represent different parts of the US - West Coast, South, Southeast, Midwest, and East Coast, and COVID was widespread throughout the country.
 
 A few different patterns could be seen from these states. California and Texas had their COVID-19 cases mildly increase in the spring, and had their first big wave in July. They had their second big wave near the end of the year. Florida had a similar pattern as California and Texas, except they had a visible first peak in March. On the other hand, Illinois and New York had completely patterns. Illinois was able to bend the curve when it was peaking in May, and did not sharply increase until November. New York was hit the hardest in March and significantly brought down the curve in the following months. Their second wave came in November/December and it was as big as their first wave.
 
