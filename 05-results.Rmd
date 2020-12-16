@@ -18,7 +18,6 @@ ggplot(statedata_analysis1, aes(x = positive, fct_reorder(state, positive))) +
   xlab("Confirmed and Probable Cases of COVID-19") +
   ylab("State") +
   theme_grey(12)
-
 ```
 
 ```{r}
