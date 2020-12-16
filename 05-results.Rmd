@@ -157,6 +157,7 @@ ggplot(patterns, aes(x = date)) +
   geom_vline(xintercept = as.numeric(as.Date("2020-07-04")), col = "pink", size = 0.5) +
   geom_vline(xintercept = as.numeric(as.Date("2020-11-03")), col = "pink", size = 0.5) +
   geom_vline(xintercept = as.numeric(as.Date("2020-11-26")), col = "pink", size = 0.5)
+
 ```
 
 The pink vertical lines in the graph represents days with major events in the United States - Easter, Memorial Day, Start of Protests against Police Brutality, Independence Day, Election Day, and Thanksgiving Day, respectively.
