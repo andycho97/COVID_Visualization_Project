@@ -1,5 +1,7 @@
 # Data sources
 
+![The COVID Tracking Project](vis.png)
+
 While studying the patterns in COVID-19 cases in the United States, we recently learned about the COVID Tracking Project (https://covidtracking.com/) at the Atlantic.
 
 The data API page has historical COVID-19 data on the national level (https://api.covidtracking.com/v1/us/daily.csv) and state level (https://api.covidtracking.com/v1/states/daily.csv). The data is also available in json format, but we opted to use the CSV format.
@@ -7,3 +9,8 @@ The data API page has historical COVID-19 data on the national level (https://ap
 The national level data has the date on a daily basis, the number of current and cumulative test results, number of current and cumulative hospitalized people, the number of current and cumulative people on ventilators, the number of recovered people, and the number of deaths for each day. The state level data has similar information, but for each state. However, certain rows such as antibody test results are not available for every state, so we will proceed with columns mentioned above, which are available for all states.
 
 Furthermore, we will research throughout the project to gather the current events data for the United States in 2020. These data points will be used in the visualizations as key dates that could have sparked an increase in the COVID-19 cases (e.g. Easter, Memorial Day, Protests, Election). 
+
+Lastly, we found the population for each state on worldometers.info and will use this information when dividing the number of cases/tests/deaths for each state by the state population to demonstrate the patterns on per capita basis. The population numbers on this project are updated until December 15, 2020.
+
+
+

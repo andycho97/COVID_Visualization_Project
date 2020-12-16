@@ -6,12 +6,12 @@ library(dplyr)
 # file_name <- "daily_us.csv"
 # data_file <- file.path(file_directory, file_name)
 
-df_us <- fread("daily_us.csv")
+df_us <- fread("~/Documents/Columbia/STAT5702/COVID_Visualization_Project/daily_us.csv")
 df_us <- df_us %>% mutate(date = as.Date(as.character(date), '%Y%m%d'))
 
 # file_name <- "daily_state.csv"
 # data_file <- file.path(file_directory, file_name)
-df_state <- fread("daily_state.csv")
+df_state <- fread("~/Documents/Columbia/STAT5702/COVID_Visualization_Project/daily_state.csv")
 ```
 
 ```{r}
@@ -73,7 +73,7 @@ p + geom_line(size = 1, color = 'blue') + theme_light() + labs(title = Statesabb
 # file_name <- "SCPRC-EST2019-18+POP-RES.csv"
 # data_file <- file.path(file_directory, file_name)
 # state_pop <- fread(data_file)
-state_pop <- fread("SCPRC-EST2019-18+POP-RES.csv")
+state_pop <- fread("~/Documents/Columbia/STAT5702/COVID_Visualization_Project/SCPRC-EST2019-18+POP-RES.csv")
 state_to_abb <- data.frame(datasets::state.abb, datasets::state.name)
 temp3 <- merge(state_pop, state_to_abb,by.x = "NAME", by.y = "datasets..state.name")
 temp4 <- merge(temp2, temp3, by.x = "state", by.y = "datasets..state.abb")

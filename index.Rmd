@@ -13,10 +13,10 @@ COVID-19 Pandemic is easily one of the top few words that come up when discussin
 
 Our group wanted to further explore the COVID-19 patterns in the United States, specifically on the state level. Different states had vastly differeing approaches to the pandemic and we were curious to answer these questions:
 
-What are some major COVID-19 patterns (cases and deaths) in the US, in relation to major domestic events?
+- What are some major COVID-19 patterns (cases and deaths) in the US, in relation to major domestic events?
 
-What are some major COVID-19 Patterns (cases and deaths) when stratified by states/regions, and if necessary, specific counties of the state?
+- What are some major COVID-19 Patterns (cases and deaths) when stratified by states/regions, and if necessary, specific counties of the state?
 
-What are some patterns that can signal a major upcoming wave? (e.g. if we see a steady growth in cases/deaths for x consecutive days, does that tell us a bigger picture about the state of COVID-19 in the US or a specific state?)
+- What are some patterns that can signal a major upcoming wave? (e.g. if we see a steady growth in cases/deaths for x consecutive days, does that tell us a bigger picture about the state of COVID-19 in the US or a specific state?)
 
 We came up with visualizations that help answer the questions above. Explore each sections on the left-hand side of your screen!

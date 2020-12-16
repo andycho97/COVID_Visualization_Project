@@ -98,7 +98,93 @@
             <section class="normal" id="section-">
 <div id="results" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Results</h1>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-8-4.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-8-5.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-8-6.png" width="672" /></p>
+<p>We will focus more on the individual state-level trends. When we plot the number of confirmed and probable cases of COVID-19 in each state, we can easily see that the top states in the “high” category are California, Texas, Florida, Illinois, and New York. We quickly note that these states represent different parts of the US - West Coast, South, Southeast, Midwest, and East Coast, and COVID was widespread throughout the country.</p>
+<p>A few different patterns could be seen from these states. California and Texas had their COVID-19 cases mildly increase in the spring, and had their first big wave in July. They had their second big wave near the end of the year. Florida had a similar pattern as California and Texas, except they had a visible first peak in March. On the other hand, Illinois and New York had completely patterns. Illinois was able to bend the curve when it was peaking in May, and did not sharply increase until November. New York was hit the hardest in March and significantly brought down the curve in the following months. Their second wave came in November/December and it was as big as their first wave.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-9-2.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
+<p>The pink vertical lines in the graph represents days with major events in the United States - Easter, Memorial Day, Start of Protests against Police Brutality, Independence Day, Election Day, and Thanksgiving Day, respectively.</p>
+<p>From the above plots, we may think the following may have happened in the United States:</p>
+<ul>
+<li>New York (as well as New Jersey - included as another representation of the Greater NY Area) was a special case in that the spread started earlier in the year and it was able to significantly decrease the infection rate while other parts of the country suffered a huge increase in the summer</li>
+<li>The spike in the rest of the United States (West Coast, South, Southeast) started around Memorial Day weekend, when families were gathering for the long weekend</li>
+<li>The Memorial Day weekend increase was exacerbated by the protests against police brutality when people gathered onto the streets all across the country</li>
+<li>The number of cases decreased in the beginning of the fall (both absolute and per capita), but started to increase again in October</li>
+<li>All regions, including New York and New Jersey this time, started to see a huge spike in November with the Election (rallies took place) and the Thanksgiving weekend (mostly visible in California)</li>
+</ul>
+<p>However, in order to validate these assumptions (that many Americans have today), we will perform a check - how was the testing done? Specifically, did the number tests stay consistent? The positivity rate seemed to stay below 0.20 for all areas. See the plots below:</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-10-2.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-10-3.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-10-4.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-10-5.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-10-6.png" width="672" /></p>
+<p>With the exception of New York and New Jersey, we can see that number of cases mirror the number of tests in each state. Florida is a good example of the decrease in tests. In July, the number of tests started to decline from 90,000 to 50,000 by fall. When the number of tests decreased by half, the number of COVID-19 cases decreased by a quarter from 12,000 to 3,000. When Florida started to increase the tests back to above 100,000 per day, the number of cases spiked back up to 9,000.</p>
+<p>We acknowledge the correlation between the number of tests and the number of positive cases in many parts of the country, and note that the “decrease” in cases between the summer and the fall may be due to reduced testing. The pattern for the entire country may be similar to that of Illinois where the number of positive cases consistently increased from June/July when many states started to loosen up the social distancing rules, and exploded starting in October, which could have multiple reasons including the whether, election, and simply people growing tired after months of social distancing.</p>
+<!-- Does this mean that COVID-19 was more contained in the fall? Or could this be that effort to contain COVID-19 (a.k.a. testing) was relaxed until November? We will see the above graphs, adjusted for population. -->
+<!-- ```{r} -->
+<!-- # Based on worldometer on December 15 -->
+<!-- california$totalTestResultsIncrease_7_capita <- california$totalTestResultsIncrease_7 / 39512223 * 100000 -->
+<!-- california$positiveIncrease_7_capita <- california$positiveIncrease_7 / 39512223 * 100000 -->
+<!-- texas$totalTestResultsIncrease_7_capita <- texas$totalTestResultsIncrease_7 / 28995881  * 100000 -->
+<!-- texas$positiveIncrease_7_capita <- texas$positiveIncrease_7 / 28995881  * 100000 -->
+<!-- florida$totalTestResultsIncrease_7_capita <- florida$totalTestResultsIncrease_7 / 21477737 * 100000 -->
+<!-- florida$positiveIncrease_7_capita <- florida$positiveIncrease_7 / 21477737 * 100000 -->
+<!-- illinois$totalTestResultsIncrease_7_capita <- illinois$totalTestResultsIncrease_7 / 12671821 * 100000 -->
+<!-- illinois$positiveIncrease_7_capita <- illinois$positiveIncrease_7 / 12671821 * 100000 -->
+<!-- newyork$totalTestResultsIncrease_7_capita <- newyork$totalTestResultsIncrease_7 / 19453561 * 100000 -->
+<!-- newyork$positiveIncrease_7_capita <- newyork$positiveIncrease_7 / 19453561 * 100000 -->
+<!-- newjersey$totalTestResultsIncrease_7_capita <- newjersey$totalTestResultsIncrease_7 / 8882190 * 100000 -->
+<!-- newjersey$positiveIncrease_7_capita <- newjersey$positiveIncrease_7 / 8882190 * 100000 -->
+<!-- # California -->
+<!-- ggplot(california, aes(x = date)) +  -->
+<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
+<!--     geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
+<!--       scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
+<!--       scale_colour_manual(values = c("blue", "red")) +  -->
+<!--       labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
+<!--       theme(legend.position = c(0.2, 0.8)) + -->
+<!--       ggtitle("COVID in California (7-Day Average)") -->
+<!-- # Florida -->
+<!-- ggplot(florida, aes(x = date)) +  -->
+<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
+<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
+<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
+<!--   scale_colour_manual(values = c("blue", "red")) +  -->
+<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
+<!--   theme(legend.position = c(0.2, 0.8)) + -->
+<!--   ggtitle("COVID in Florida (7-Day Average)") -->
+<!-- # Texas -->
+<!-- ggplot(texas, aes(x = date)) +  -->
+<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
+<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
+<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
+<!--   scale_colour_manual(values = c("blue", "red")) +  -->
+<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
+<!--   theme(legend.position = c(0.2, 0.8)) + -->
+<!--   ggtitle("COVID in Texas (7-Day Average)") -->
+<!-- # Illinois -->
+<!-- ggplot(illinois, aes(x = date)) +  -->
+<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
+<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
+<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
+<!--   scale_colour_manual(values = c("blue", "red")) +  -->
+<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
+<!--   theme(legend.position = c(0.2, 0.8)) + -->
+<!--   ggtitle("COVID in Illinois (7-Day Average)") -->
+<!-- # New York -->
+<!-- ggplot(newyork, aes(x = date)) +  -->
+<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
+<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
+<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
+<!--   scale_colour_manual(values = c("blue", "red")) +  -->
+<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
+<!--   theme(legend.position = c(0.2, 0.8)) + -->
+<!--   ggtitle("COVID in New York (7-Day Average)") -->
+<!-- # New Jersey -->
+<!-- ggplot(newjersey, aes(x = date)) +  -->
+<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
+<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
+<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
+<!--   scale_colour_manual(values = c("blue", "red")) +  -->
+<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
+<!--   theme(legend.position = c(0.2, 0.8)) + -->
+<!--   ggtitle("COVID in New Jersey (7-Day Average)") -->
+<!-- ``` -->
 
 </div>
             </section>

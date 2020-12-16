@@ -15,8 +15,8 @@ library(lubridate)
 
 
 ```{r, warning = FALSE}
-statedata <- read.csv("daily_state.csv")
-usdata <- read.csv("daily_us.csv")
+statedata <- read.csv("~/Documents/Columbia/STAT5702/COVID_Visualization_Project/daily_state.csv")
+usdata <- read.csv("~/Documents/Columbia/STAT5702/COVID_Visualization_Project/daily_us.csv")
 statedata <- as.data.frame(statedata)
 statedata_total <- select(statedata, -c("checkTimeEt", "commercialScore", "dateChecked", "dateModified", "grade", "hash", "hospitalized", "negativeIncrease", "negativeRegularScore", "negativeScore", "posNeg", "positiveScore", "score", "total"))
 
@@ -38,7 +38,7 @@ From the graph, we could see California has the largest number of total positive
 
 
 ```{r}
-state_data_thanksgiving <- state_positive_data %>% filter(date <= 20201130 & date >= 20201123)
+state_data_thanksgiving <- state_positive_data %>% filter(date <= 20201207 & date >= 20201101)
 state_data_tg_day <- state_positive_data %>% filter(date == 20201127)
 top_5_states <- (state_data_tg_day[order(-state_data_tg_day$positive), ] %>% top_n(n = 5, wt = positive))$state
 statedata_analysis2 <- state_data_thanksgiving %>% filter(state %in% top_5_states)
@@ -52,7 +52,7 @@ ggplot(statedata_analysis2, aes(as.Date(as.character(date), "%Y%m%d"), positiveI
   geom_line(color = "red") +
   geom_point(color = "red") +
   facet_wrap(~state, nrow = 1) +
-  scale_x_date(date_labels ="%b\n%d",date_breaks ="1 day") +
+  #scale_x_date(date_labels ="%b\n%d",date_breaks ="1 day") +
   ggtitle("Thanksgiving week daily increase of states with top 5 total positive cases on Black Friday, Nov 27(in descending order)") +
   xlab("Date") +
   ylab("Daily cases") +
