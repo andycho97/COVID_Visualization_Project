@@ -97,7 +97,7 @@ ggplot(patterns, aes(x = date)) +
   scale_colour_manual(values = c("red", "blue", "green", "brown", "black", "purple")) + 
   labs(y = "COVID Cases per Day", x = "Date", colour = "Lines") +
   theme(legend.position = c(0.1, 0.8)) +
-  ggtitle("COVID in Top 5 States (7-Day Average)") +
+  ggtitle("COVID in Top 5 States + NJ (7-Day Average)") +
   
   geom_vline(xintercept = as.numeric(as.Date("2020-04-12")), col = "pink", size = 0.5) +
   geom_vline(xintercept = as.numeric(as.Date("2020-05-25")), col = "pink", size = 0.5) +
@@ -113,7 +113,7 @@ patterns$texas_percapita <- patterns$texas_7 / 28995881	 * 100000
 patterns$florida_percapita <- patterns$florida_7/ 21477737 * 100000
 patterns$illinois_percapita <- patterns$illinois_7 / 12671821 * 100000
 patterns$newyork_percapita <- patterns$newyork_7 / 19453561 * 100000
-patterns$newjersey_percapita <- patterns$newyork_7 / 8882190 * 100000
+patterns$newjersey_percapita <- patterns$newjersey_7 / 8882190 * 100000
 
 # Top 5 States combined per capita
 ggplot(patterns, aes(x = date)) + 
@@ -127,7 +127,7 @@ ggplot(patterns, aes(x = date)) +
   scale_colour_manual(values = c("red", "blue", "green", "brown", "black", "purple")) + 
   labs(y = "COVID Cases per Day", x = "Date", colour = "Lines") +
   theme(legend.position = c(0.7, 0.8)) +
-  ggtitle("COVID in Top 5 States (7-Day Average, per 100,000 people)") +
+  ggtitle("COVID in Top 5 States + NJ (7-Day Average, per 100,000 people)") +
   
   geom_vline(xintercept = as.numeric(as.Date("2020-04-12")), col = "pink", size = 0.5) +
   geom_vline(xintercept = as.numeric(as.Date("2020-05-25")), col = "pink", size = 0.5) +
@@ -149,7 +149,7 @@ ggplot(patterns, aes(x = date)) +
   scale_colour_manual(values = c("red", "blue", "green", "brown", "black", "purple")) + 
   labs(y = "COVID Cases per Day", x = "Date", colour = "Lines") +
   theme(legend.position = c(0.7, 0.8)) +
-  ggtitle("COVID in Top 5 States (Test Positivity Rate)") +
+  ggtitle("COVID in Top 5 States + NJ (Test Positivity Rate)") +
   
   geom_vline(xintercept = as.numeric(as.Date("2020-04-12")), col = "pink", size = 0.5) +
   geom_vline(xintercept = as.numeric(as.Date("2020-05-25")), col = "pink", size = 0.5) +
