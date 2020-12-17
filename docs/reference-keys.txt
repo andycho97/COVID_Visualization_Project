@@ -3,5 +3,12 @@ data-sources
 data-transformation
 missing-values
 results
+overall-patterns
+patterns-by-region
+correlation-with-covid-19-test-numbers
 interactive-component
 conclusion
+initial-questions
+additional-insight
+future-work-and-potential-developments
+final-words

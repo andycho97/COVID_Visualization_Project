@@ -74,9 +74,18 @@
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#overall-patterns"><i class="fa fa-check"></i><b>5.1</b> Overall Patterns</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#patterns-by-region"><i class="fa fa-check"></i><b>5.2</b> Patterns by Region</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#correlation-with-covid-19-test-numbers"><i class="fa fa-check"></i><b>5.3</b> Correlation with COVID-19 Test Numbers?</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a><ul>
+<li class="chapter" data-level="7.1" data-path="conclusion.html"><a href="conclusion.html#initial-questions"><i class="fa fa-check"></i><b>7.1</b> Initial Questions</a></li>
+<li class="chapter" data-level="7.2" data-path="conclusion.html"><a href="conclusion.html#additional-insight"><i class="fa fa-check"></i><b>7.2</b> Additional Insight</a></li>
+<li class="chapter" data-level="7.3" data-path="conclusion.html"><a href="conclusion.html#future-work-and-potential-developments"><i class="fa fa-check"></i><b>7.3</b> Future Work and Potential Developments</a></li>
+<li class="chapter" data-level="7.4" data-path="conclusion.html"><a href="conclusion.html#final-words"><i class="fa fa-check"></i><b>7.4</b> Final Words</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -98,8 +107,180 @@
             <section class="normal" id="section-">
 <div id="conclusion" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Conclusion</h1>
-<p>sample text sample text</p>
+<p>2020 has been the year of significant change in everyone’s life forever to be written down as the year of COVID-19, but will there be more to come? Throughout this project we aimed to answer a few key questions and discovered some more interesting problems in the process. Below is a refresher of those questions and our conclusions from our results:</p>
+<div id="initial-questions" class="section level2">
+<h2><span class="header-section-number">7.1</span> Initial Questions</h2>
+<p><strong>What are some major COVID-19 patterns (cases and deaths) in the US, in relation to major domestic events?</strong></p>
+<p>In our analysis we noticed some alarming patterns and confirmed our suspicions that major holidays seemed to have an effect on the increasing the spread of COVID-19. The majority of states saw a rise of positive cases following Memorial Day weekend. In addition, we saw significant upticks following the protests against police brutality and Thanksgiving. However, this only paints one side of the story. Further analysis showed that positive cases were visibly correlated with the number of tests. This result, in fact, shows that the rise due to holidays seems to be just blips in the grand scheme of COVID-19 spread in the US. Moreover, it seems like we are hitting the exponential rise portion of the pandemics growth. As discussed earlier, the United States has had an upward trend until October, followed by an exponential increase similar to that of Illinois. Almost every state regardless of their performance in the summer months has exploded exponentially in the last two months. Below is the national trend with 7-day average:</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><strong>What are some major COVID-19 Patterns (cases and deaths) when stratified by states/regions, and if necessary, specific counties of the state?</strong></p>
+<p>We stratified states based on the magnitude of tests and relative to their population and found that the “high” states, although usually performing worse in number of cases, did not trend that differently from “medium”, and “low” states. This observation confirms the final result from our previous question that regardless of seasonality, holidays, or individual state performance, the US is heading towards the and exponential trend in terms of spread of COVID-19.</p>
+<p><strong>What are some patterns that can signal a major upcoming wave? (e.g. if we see a steady growth in cases/deaths for x consecutive days, does that tell us a bigger picture about the state of COVID-19 in the US or a specific state?)</strong></p>
+<p>We found certain patterns within the data of rise and falls, but could not conclusively discern a reason for the trends. Some of the trends were due to data reporting issues and when we smoothed out for the trends by taking the 7-day average, some of those disappeared. Again, we initially hypothesized that major events in the United States led to increases to COVID-19, although true in its locality, does not detract from the exponential growth we are seeing today.</p>
+</div>
+<div id="additional-insight" class="section level2">
+<h2><span class="header-section-number">7.2</span> Additional Insight</h2>
+<p>In our work we also tried to attribute local policy changes in regards to COVID-19. Laws were extremely strict initially in March. As the hysteria died, people across the US began to lax their weariness in regards to danger and spread of COVID-19. This can also be reflected in local laws. Phased approaches of openings were announced and laws began to relax across the board. Potentially, the initial fear and stronger laws could have led to the steadiness of the summer spread. However, the relaxed laws and the normalization of COVID-19 in our lives have led to a surge in cases, which we see today. Below is an example of NY law changes overtime. The laxing of restrictions in the summer months are clearly reflected in the timeline (‘<a href="https://en.wikipedia.org/wiki/COVID-19_pandemic_in_New_York_(state)" class="uri">https://en.wikipedia.org/wiki/COVID-19_pandemic_in_New_York_(state)</a>’):</p>
+<table>
+<colgroup>
+<col width="5%" />
+<col width="94%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="left">Action Taken</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">March 7, 2020</td>
+<td align="left">State of emergency declared.</td>
+</tr>
+<tr class="even">
+<td align="left">March 9, 2020</td>
+<td align="left">State began producing its own brand of hand sanitizer.</td>
+</tr>
+<tr class="odd">
+<td align="left">March 10, 2020</td>
+<td align="left">Governor Cuomo orders a coronavirus “containment zone” in New Rochelle, Westchester County, NY.[65]</td>
+</tr>
+<tr class="even">
+<td align="left">March 12, 2020</td>
+<td align="left">All gatherings of less than 500 people ordered to cut capacity by 50%. All gatherings of more than 500 people ordered to cancel.</td>
+</tr>
+<tr class="odd">
+<td align="left">March 12, 2020</td>
+<td align="left">All SUNY campuses ordered to close within a week, and then shift to online for the remainder of the semester.</td>
+</tr>
+<tr class="even">
+<td align="left">March 15, 2020</td>
+<td align="left">All New York City schools ordered to close until April 20.</td>
+</tr>
+<tr class="odd">
+<td align="left">March 16, 2020</td>
+<td align="left">Cuomo coordinates with his counterparts in New Jersey and Connecticut to formulate uniform policies for shutdowns.[66]</td>
+</tr>
+<tr class="even">
+<td align="left">March 20, 2020</td>
+<td align="left">State-wide stay-at-home order declared. All non-essential businesses ordered to close. All non-essential gatherings canceled/postponed.[66]</td>
+</tr>
+<tr class="odd">
+<td align="left">March 25, 2020</td>
+<td align="left">Advisory issued ordering nursing homes to admit patients who test positive for the coronavirus and to not allow testing of prospective nursing home patients. This order was revoked on May 10.</td>
+</tr>
+<tr class="even">
+<td align="left">March 27, 2020</td>
+<td align="left">All schools statewide ordered to remain closed until April 15.</td>
+</tr>
+<tr class="odd">
+<td align="left">March 28, 2020</td>
+<td align="left">All non-essential construction sites ordered to shut down.</td>
+</tr>
+<tr class="even">
+<td align="left">April 6, 2020</td>
+<td align="left">Statewide stay-at-home order and school closures extended to April 29.</td>
+</tr>
+<tr class="odd">
+<td align="left">April 9, 2020</td>
+<td align="left">List of businesses deemed essential expanded.</td>
+</tr>
+<tr class="even">
+<td align="left">April 15, 2020</td>
+<td align="left">All state residents ordered to wear face masks/coverings in public places where social distancing is not possible.</td>
+</tr>
+<tr class="odd">
+<td align="left">April 16, 2020</td>
+<td align="left">Statewide stay-at-home order and school closures extended to May 15.</td>
+</tr>
+<tr class="even">
+<td align="left">May 1, 2020</td>
+<td align="left">All schools and universities ordered to remain closed for the remainder of the academic year.</td>
+</tr>
+<tr class="odd">
+<td align="left">May 7, 2020</td>
+<td align="left">Statewide four-phase reopening plan is first announced.</td>
+</tr>
+<tr class="even">
+<td align="left">May 14, 2020</td>
+<td align="left">Statewide state of emergency extended to June 13.</td>
+</tr>
+<tr class="odd">
+<td align="left">May 15, 2020</td>
+<td align="left">Phase 1 of reopening allowed for counties that met qualifications. Five counties met qualifications and began reopening on this date.</td>
+</tr>
+<tr class="even">
+<td align="left">May 15, 2020</td>
+<td align="left">Drive-in theaters, landscaping/gardening businesses allowed to reopen state-wide (regardless of Phase 1 qualifications).</td>
+</tr>
+<tr class="odd">
+<td align="left">May 23, 2020</td>
+<td align="left">Gatherings of up to ten people allowed as long as social distancing is practiced.</td>
+</tr>
+<tr class="even">
+<td align="left">June 8, 2020</td>
+<td align="left">New York City meets conditions for Phase 1, allowing the reopening of construction, manufacturing, agriculture, forestry, fishing, and select retail businesses that can offer curbside pickup.</td>
+</tr>
+<tr class="odd">
+<td align="left">June 15, 2020</td>
+<td align="left">Four-phase reopening plan is modified to allow non-essential gatherings of 25 people upon entry of Phase 3, and 50 people upon entry of Phase 4.</td>
+</tr>
+<tr class="even">
+<td align="left">June 22, 2020</td>
+<td align="left">New York City meets conditions for Phase 2, allowing the reopening of outdoor dining at restaurants, hair salons and barber shops, offices, real estate firms, in-store retail, vehicle sales, retail rental, repair services, cleaning services, and commercial building management businesses.</td>
+</tr>
+<tr class="odd">
+<td align="left">July 10, 2020</td>
+<td align="left">Malls allowed to open at 25% capacity for regions in Phase 4, with all patrons required to wear masks.</td>
+</tr>
+<tr class="even">
+<td align="left">July 16, 2020</td>
+<td align="left">New restrictions on bars/restaurants only allowing alcohol to be served only to people ordering food.</td>
+</tr>
+<tr class="odd">
+<td align="left">August 7, 2020</td>
+<td align="left">Schools allowed to open in-person in the fall if certain conditions are met.</td>
+</tr>
+<tr class="even">
+<td align="left">August 19, 2020</td>
+<td align="left">Ban on ticketed music events at bars and restaurants.</td>
+</tr>
+<tr class="odd">
+<td align="left">October 1, 2020</td>
+<td align="left">Exposure notification apps are added to notify users of potential exposure.</td>
+</tr>
+<tr class="even">
+<td align="left">October 1, 2020</td>
+<td align="left">The previous ban on ticketed events at bars and restaurants is ruled unconstitutional.</td>
+</tr>
+<tr class="odd">
+<td align="left">October 6, 2020</td>
+<td align="left">Micro-cluster strategy is introduced, with the first micro-clusters being parts of Brooklyn and Queens.</td>
+</tr>
+<tr class="even">
+<td align="left">November 12, 2020</td>
+<td align="left">Bars, gyms, and any other business with a liquor license must close by 10 p.m. (restaurants as well, except for curbside pickup). Household gatherings limited to ten people.</td>
+</tr>
+<tr class="odd">
+<td align="left">November 25, 2020</td>
+<td align="left">Previous restrictions on capacity through the micro-cluster strategy for places of worship is ruled unconstitutional.</td>
+</tr>
+<tr class="even">
+<td align="left">December 8, 2020</td>
+<td align="left">Hospital bed capacity statewide is demaded to be upgraded by 25 percent.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="future-work-and-potential-developments" class="section level2">
+<h2><span class="header-section-number">7.3</span> Future Work and Potential Developments</h2>
+<p>Although our project is depicting a gloomy outlook for the future of the US, we have identified future developments that can potentially stem the tide and control the the spread of COVID-19. <a href="https://www.fda.gov/emergency-preparedness-and-response/coronavirus-disease-2019-covid-19/pfizer-biontech-covid-19-vaccine">Pfizer has been approved for distribution</a> of the COVID-19 vaccine and expects to have <a href="https://www.pfizer.com/products/coronavirus/manufacturing-and-distribution">50 million doses</a> available by the end of 2020. This is a great news and can potentially influence the trend. At the same time, we understand that widespread distribution and adoption are still slow processes. With this in mind, the exponential trend will still continue for the foreseeable future. Once the vaccine becomes more accessible to the everyday person, we can then monitor the trends and see how effective the vaccine are. As is the case with new drugs, the effectiveness is still yet to be determined.</p>
+</div>
+<div id="final-words" class="section level2">
+<h2><span class="header-section-number">7.4</span> Final Words</h2>
+<p>In concluding our project, we hope that you gained a better understanding of the spread of COVID-19 and urgency of the situation. Given the exponential growth in the recent months, we can see the effects of our behaviors and our local laws have consequences months later. We hope that you came away more informed about the situation.</p>
 
+</div>
 </div>
             </section>
 

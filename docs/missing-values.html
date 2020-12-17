@@ -74,9 +74,18 @@
 <li class="chapter" data-level="2" data-path="data-sources.html"><a href="data-sources.html"><i class="fa fa-check"></i><b>2</b> Data sources</a></li>
 <li class="chapter" data-level="3" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>3</b> Data transformation</a></li>
 <li class="chapter" data-level="4" data-path="missing-values.html"><a href="missing-values.html"><i class="fa fa-check"></i><b>4</b> Missing values</a></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="results.html"><a href="results.html#overall-patterns"><i class="fa fa-check"></i><b>5.1</b> Overall Patterns</a></li>
+<li class="chapter" data-level="5.2" data-path="results.html"><a href="results.html#patterns-by-region"><i class="fa fa-check"></i><b>5.2</b> Patterns by Region</a></li>
+<li class="chapter" data-level="5.3" data-path="results.html"><a href="results.html#correlation-with-covid-19-test-numbers"><i class="fa fa-check"></i><b>5.3</b> Correlation with COVID-19 Test Numbers?</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a><ul>
+<li class="chapter" data-level="7.1" data-path="conclusion.html"><a href="conclusion.html#initial-questions"><i class="fa fa-check"></i><b>7.1</b> Initial Questions</a></li>
+<li class="chapter" data-level="7.2" data-path="conclusion.html"><a href="conclusion.html#additional-insight"><i class="fa fa-check"></i><b>7.2</b> Additional Insight</a></li>
+<li class="chapter" data-level="7.3" data-path="conclusion.html"><a href="conclusion.html#future-work-and-potential-developments"><i class="fa fa-check"></i><b>7.3</b> Future Work and Potential Developments</a></li>
+<li class="chapter" data-level="7.4" data-path="conclusion.html"><a href="conclusion.html#final-words"><i class="fa fa-check"></i><b>7.4</b> Final Words</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -101,9 +110,9 @@
 <p>For the state-level dataset, some rows are missing no data and some rows are missing significant amount of data. Fortunately, the crucial columns, including <code>date</code>, <code>state</code>, <code>totalTestResults</code>, <code>positiveIncrease</code> (in COVID-19 cases), <code>negativeIncrease</code> (in COVID-19 cases), <code>totalTestResultsIncrease</code>, <code>deathIncrease</code>, and <code>hospitalizedIncrease</code>, do not have any missing rows.</p>
 <p>On the other hand, many of the columns related to hospitalization are ventilators have consistent missingness in data (e.g. <code>hospitalizedCurrently</code>, <code>inlcuCurrently</code>). Furthermore, the detailed columns regarding PCR tests, such as <code>totalTestsPeopleViral</code> (unique people tested at least once via PCR testing) and <code>positiveTestsViral</code> (completed PCR tests (or specimens tested) that return positive) are consistently missing. In order to have the most consistent and fully available column for testing, we will perform our analyses and visualizations using <code>totalTestResultsIncrease</code> for each state.</p>
 <p>Also note that below graphs are missing columns regarding Antibody and Antiget tests as those columns are unrelated to the scope of this project.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>In our analyses and visualizations, we will focus on certain states that are leading in COVID-19 cases and representing different parts of the country. We can see from the below graphs that data for certain columns are often fully available or fully missing. To avoid any potential inconsistencies, we will proceed with columns mentioned above that are universally fully available for all states.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-13-2.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-13-3.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-13-4.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-13-5.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-9-2.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-9-3.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-9-4.png" width="672" /><img src="finalproj_files/figure-html/unnamed-chunk-9-5.png" width="672" /></p>
 <!-- If we sort the graph by row, it is clear that almost every state in some days has missing values in different variables. Most missing pattern does not differ a lot in type and number variables. If we sort the graph by colum, the variable with the highest number of missing values is 'totalTestPeopleAntigen'. Additionally, it's not hard to see that the variables associated with the number of individuals of positive and ne gative results of different tests have a large number of missing values. Most categorical variables such as "fips" and "dataQualityGrade" does not have missing values. If we sort the graph by both column and row, the distribution of the length of missing pattern becomes approximately uniform. The general shape becomes flatter. -->
 
 </div>

@@ -1,6 +1,8 @@
 # Results
 
-We started by looking at how United States was doing as a whole to get an idea of the bigger picture effects of CVOID-19 among all states. Below is a quick snapshot of how the states were performing. As the data suggests almost every state is exhibiting an exponential trend in daily new positive tests reaching its all time highs within the last month with a few exceptions like Hawaii, Iowa, and North Dakota. As we will discuss later in the results, this dramatic increase can be attributed to many factors such as higher testing rate, holidays, lax in public cautiousness, and increased travel. Indeed the data trends prove alarming and depict a drastic shift in COVID-19's impact on American lives. We may and have already seen changes in public policy across states. For example, NY has reverted some of the allowances of public interaction like indoor dining. California as well has issued shelter at home laws.   
+## Overall Patterns
+
+We started by looking at how United States was doing as a whole to get an idea of the bigger picture effects of COVID-19 among all states. Below is a quick snapshot of how the states were performing. As the data suggests almost every state is exhibiting an exponential trend in daily new positive tests reaching its all time highs within the last month with a few exceptions like Hawaii, Iowa, and North Dakota. As we will discuss later in the results, this dramatic increase can be attributed to many factors such as higher testing rate, holidays, lax in public cautiousness, and increased travel. Indeed the data trends prove alarming and depict a drastic shift in COVID-19's impact on American lives. We may and have already seen changes in public policy across states. For example, New York has reverted some of the allowances of public interaction like indoor dining. California as well has issued shelter at home laws.   
 
 ```{r}
 library(dplyr)
@@ -18,9 +20,9 @@ daily_state <- read_csv("daily_state.csv", col_types = cols(date = col_date(form
 
 ![COVID-19 Patterns in All States](vis2.png)
 
-Now that we quantitatively established that the country as a whole has greatly been affected by COVID-19, we will focus more on the individual state-level trends. When we plot the number of confirmed and probable cases of COVID-19 in each state, we can easily see that the top states in the "high" category are California, Texas, Florida, Illinois, and New York. We quickly note that these states represent different parts of the US - West Coast, South, Southeast, Midwest, and East Coast, and COVID was widespread throughout the country.
+## Patterns by Region
 
-A few different patterns could be seen from these states. California and Texas had their COVID-19 cases mildly increase in the spring, and had their first big wave in July. They had their second big wave near the end of the year. Florida had a similar pattern as California and Texas, except they had a visible first peak in March. On the other hand, Illinois and New York had completely patterns. Illinois was able to bend the curve when it was peaking in May, and did not sharply increase until November. New York was hit the hardest in March and significantly brought down the curve in the following months. Their second wave came in November/December and it was as big as their first wave.
+Now that we quantitatively established that the country as a whole has greatly been affected by COVID-19, we will focus more on the individual state-level trends. When we plot the number of confirmed and probable cases of COVID-19 in each state, we can easily see that the top states in the "high" category are California, Texas, Florida, Illinois, and New York. We quickly note that these states represent different parts of the US - West Coast, South, Southeast, Midwest, and East Coast, and COVID was widespread throughout the country.
 
 ```{r}
 # Load state level data
@@ -37,6 +39,8 @@ ggplot(statedata_analysis1, aes(x = positive, fct_reorder(state, positive))) +
   ylab("State") +
   theme_grey(12)
 ```
+
+A few different patterns could be seen from these states. California and Texas had their COVID-19 cases mildly increase in the spring, and had their first big wave in July. They had their second big wave near the end of the year. Florida had a similar pattern as California and Texas, except they had a visible first peak in March. On the other hand, Illinois and New York had completely patterns. Illinois was able to bend the curve when it was peaking in May, and did not sharply increase until November. New York was hit the hardest in March and significantly brought down the curve in the following months. Their second wave came in November/December and it was as big as their first wave.
 
 ```{r}
 # Load states with some of the highest number of reported cases
@@ -190,7 +194,7 @@ From the above plots, we may think the following may have happened in the United
 
 However, in order to validate these assumptions (that many Americans have today), we will perform a check - how was the testing done? Specifically, did the number tests stay consistent? The positivity rate seemed to stay below 0.20 for all areas. See the plots below:
 
-
+## Correlation with COVID-19 Test Numbers?
 
 ```{r}
 library(zoo)
@@ -278,97 +282,4 @@ ggplot(newjersey, aes(x = date)) +
 With the exception of New York and New Jersey, we can see that number of cases mirror the number of tests in each state. Florida is a good example of the decrease in tests. In July, the number of tests started to decline from 90,000 to 50,000 by fall. When the number of tests decreased by half, the number of COVID-19 cases decreased by a quarter from 12,000 to 3,000. When Florida started to increase the tests back to above 100,000 per day, the number of cases spiked back up to 9,000.
 
 We acknowledge the correlation between the number of tests and the number of positive cases in many parts of the country, and note that the "decrease" in cases between the summer and the fall may be due to reduced testing. The pattern for the entire country may be similar to that of Illinois where the number of positive cases consistently increased from June/July when many states started to loosen up the social distancing rules, and exploded starting in October, which could have multiple reasons including the whether, election, and simply people growing tired after months of social distancing.
-
-<!-- Does this mean that COVID-19 was more contained in the fall? Or could this be that effort to contain COVID-19 (a.k.a. testing) was relaxed until November? We will see the above graphs, adjusted for population. -->
-
-<!-- ```{r} -->
-<!-- # Based on worldometer on December 15 -->
-
-<!-- california$totalTestResultsIncrease_7_capita <- california$totalTestResultsIncrease_7 / 39512223 * 100000 -->
-<!-- california$positiveIncrease_7_capita <- california$positiveIncrease_7 / 39512223 * 100000 -->
-
-<!-- texas$totalTestResultsIncrease_7_capita <- texas$totalTestResultsIncrease_7 / 28995881	 * 100000 -->
-<!-- texas$positiveIncrease_7_capita <- texas$positiveIncrease_7 / 28995881	 * 100000 -->
-
-<!-- florida$totalTestResultsIncrease_7_capita <- florida$totalTestResultsIncrease_7 / 21477737 * 100000 -->
-<!-- florida$positiveIncrease_7_capita <- florida$positiveIncrease_7 / 21477737 * 100000 -->
-
-<!-- illinois$totalTestResultsIncrease_7_capita <- illinois$totalTestResultsIncrease_7 / 12671821 * 100000 -->
-<!-- illinois$positiveIncrease_7_capita <- illinois$positiveIncrease_7 / 12671821 * 100000 -->
-
-<!-- newyork$totalTestResultsIncrease_7_capita <- newyork$totalTestResultsIncrease_7 / 19453561 * 100000 -->
-<!-- newyork$positiveIncrease_7_capita <- newyork$positiveIncrease_7 / 19453561 * 100000 -->
-
-<!-- newjersey$totalTestResultsIncrease_7_capita <- newjersey$totalTestResultsIncrease_7 / 8882190 * 100000 -->
-<!-- newjersey$positiveIncrease_7_capita <- newjersey$positiveIncrease_7 / 8882190 * 100000 -->
-
-
-<!-- # California -->
-<!-- ggplot(california, aes(x = date)) +  -->
-<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
-<!--     geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
-
-<!--       scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
-<!--       scale_colour_manual(values = c("blue", "red")) +  -->
-<!--       labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
-<!--       theme(legend.position = c(0.2, 0.8)) + -->
-<!--       ggtitle("COVID in California (7-Day Average)") -->
-
-<!-- # Florida -->
-<!-- ggplot(florida, aes(x = date)) +  -->
-<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
-<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
-
-<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
-<!--   scale_colour_manual(values = c("blue", "red")) +  -->
-<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
-<!--   theme(legend.position = c(0.2, 0.8)) + -->
-<!--   ggtitle("COVID in Florida (7-Day Average)") -->
-
-<!-- # Texas -->
-<!-- ggplot(texas, aes(x = date)) +  -->
-<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
-<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
-
-<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
-<!--   scale_colour_manual(values = c("blue", "red")) +  -->
-<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
-<!--   theme(legend.position = c(0.2, 0.8)) + -->
-<!--   ggtitle("COVID in Texas (7-Day Average)") -->
-
-<!-- # Illinois -->
-<!-- ggplot(illinois, aes(x = date)) +  -->
-<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
-<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
-
-<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
-<!--   scale_colour_manual(values = c("blue", "red")) +  -->
-<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
-<!--   theme(legend.position = c(0.2, 0.8)) + -->
-<!--   ggtitle("COVID in Illinois (7-Day Average)") -->
-
-<!-- # New York -->
-<!-- ggplot(newyork, aes(x = date)) +  -->
-<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
-<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
-
-<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
-<!--   scale_colour_manual(values = c("blue", "red")) +  -->
-<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
-<!--   theme(legend.position = c(0.2, 0.8)) + -->
-<!--   ggtitle("COVID in New York (7-Day Average)") -->
-
-<!-- # New Jersey -->
-<!-- ggplot(newjersey, aes(x = date)) +  -->
-<!--   geom_line(aes(y = totalTestResultsIncrease_7_capita, colour = "Total Tests")) +  -->
-<!--   geom_line(aes(y = positiveIncrease_7_capita*10, colour = "Positive Cases")) + -->
-
-<!--   scale_y_continuous(sec.axis = sec_axis(~.*0.1, name = "Positive Cases")) + -->
-<!--   scale_colour_manual(values = c("blue", "red")) +  -->
-<!--   labs(y = "Total Tests", x = "Date", colour = "Lines") + -->
-<!--   theme(legend.position = c(0.2, 0.8)) + -->
-<!--   ggtitle("COVID in New Jersey (7-Day Average)") -->
-<!-- ``` -->
-
-
 
