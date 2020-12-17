@@ -13,11 +13,6 @@ library(ggplot2)
 daily_state <- read_csv("daily_state.csv", col_types = cols(date = col_date(format = "%Y%m%d")))
 ```
 
-```{r}
-# p <- ggplot(data = daily_state %>% filter(!(state %in% c("AS", "PR", "GU", "MP")), positiveIncrease >= 0), aes(date, positiveIncrease))
-# p + geom_line(col = "blue") + facet_wrap(~state, scales = "free") + labs(ylab = "Daily Positive Tests")
-```
-
 ![COVID-19 Patterns in All States](vis2.png)
 
 ## Patterns by Region
@@ -169,7 +164,7 @@ ggplot(patterns, aes(x = date)) +
   geom_line(aes(y = texas_positivity, colour = "Texas")) + 
   
   scale_colour_manual(values = c("red", "blue", "green", "brown", "black", "purple")) + 
-  labs(y = "COVID Cases per Day", x = "Date", colour = "Lines") +
+  labs(y = "COVID Positivity", x = "Date", colour = "Lines") +
   theme(legend.position = c(0.7, 0.8)) +
   ggtitle("COVID in Top 5 States + NJ (Test Positivity Rate)") +
   

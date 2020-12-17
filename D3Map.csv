@@ -1,51 +1,52 @@
-"state","seven_day_average_Positive","seven_day_average_death_toll","state_name"
-"AK",662,4,"Alaska"
-"AL",3552,39,"Alabama"
-"AR",2164,40,"Arkansas"
-"AZ",6011,53,"Arizona"
-"CA",27646,148,"California"
-"CO",4461,75,"Colorado"
-"CT",2573,32,"Connecticut"
-"DE",795,4,"Delaware"
-"FL",9438,108,"Florida"
-"GA",4194,48,"Georgia"
-"HI",104,3,"Hawaii"
-"IA",1493,84,"Iowa"
-"ID",1662,18,"Idaho"
-"IL",9174,180,"Illinois"
-"IN",6588,80,"Indiana"
-"KS",2904,49,"Kansas"
-"KY",3315,19,"Kentucky"
-"LA",2514,30,"Louisiana"
-"MA",4941,48,"Massachusetts"
-"MD",2884,38,"Maryland"
-"ME",332,4,"Maine"
-"MI",6188,116,"Michigan"
-"MN",4668,64,"Minnesota"
-"MO",3654,47,"Missouri"
-"MS",2031,31,"Mississippi"
-"MT",844,10,"Montana"
-"NC",5799,43,"North Carolina"
-"ND",563,19,"North Dakota"
-"NE",1656,25,"Nebraska"
-"NH",817,6,"New Hampshire"
-"NJ",4907,57,"New Jersey"
-"NM",1713,27,"New Mexico"
-"NV",2722,29,"Nevada"
-"NY",9968,79,"New York"
-"OH",11920,84,"Ohio"
-"OK",3163,21,"Oklahoma"
-"OR",1520,21,"Oregon"
-"PA",10400,161,"Pennsylvania"
-"RI",1262,14,"Rhode Island"
-"SC",2770,26,"South Carolina"
-"SD",790,22,"South Dakota"
-"TN",6001,68,"Tennessee"
-"TX",11596,194,"Texas"
-"UT",2746,14,"Utah"
-"VA",3742,28,"Virginia"
-"VT",106,2,"Vermont"
-"WA",2789,24,"Washington"
-"WI",4354,62,"Wisconsin"
-"WV",1202,19,"West Virginia"
-"WY",463,8,"Wyoming"
+state,seven_day_average_Positive,seven_day_average_Tests,seven_day_average_death_toll,state_name
+AK,528,9513,4,Alaska
+AL,3636,9709,30,Alabama
+AR,2122,12293,41,Arkansas
+AZ,6660,45324,64,Arizona
+CA,35789,301074,177,California
+CO,3481,40781,74,Colorado
+CT,2462,38077,32,Connecticut
+DC,250,6554,2,District of Columbia
+DE,791,8835,4,Delaware
+FL,10078,109592,111,Florida
+GA,4604,34255,44,Georgia
+HI,128,4749,2,Hawaii
+IA,1194,3385,48,Iowa
+ID,1445,2754,20,Idaho
+IL,8310,98278,166,Illinois
+IN,6062,49028,85,Indiana
+KS,2109,6030,45,Kansas
+KY,3080,21111,21,Kentucky
+LA,2376,26246,36,Louisiana
+MA,4957,89720,50,Massachusetts
+MD,2731,46369,44,Maryland
+ME,408,8138,3,Maine
+MI,4914,52526,126,Michigan
+MN,3242,38578,67,Minnesota
+MO,3170,19607,59,Missouri
+MS,2139,9762,36,Mississippi
+MT,644,5227,9,Montana
+NC,5907,54279,45,North Carolina
+ND,362,5568,16,North Dakota
+NE,1180,12972,23,Nebraska
+NH,834,7369,8,New Hampshire
+NJ,4798,65299,66,New Jersey
+NM,1630,13735,32,New Mexico
+NV,2538,16075,38,Nevada
+NY,10213,196176,99,New York
+OH,9236,56680,84,Ohio
+OK,3177,17851,26,Oklahoma
+OR,1334,24941,22,Oregon
+PA,10579,26788,201,Pennsylvania
+RI,1130,15048,15,Rhode Island
+SC,2954,27842,27,South Carolina
+SD,654,1592,22,South Dakota
+TN,8760,50150,71,Tennessee
+TX,14441,65286,188,Texas
+UT,2596,14145,14,Utah
+VA,3587,29532,32,Virginia
+VT,103,4958,3,Vermont
+WA,2535,30661,-2,Washington
+WI,3712,31328,50,Wisconsin
+WV,1198,12940,20,West Virginia
+WY,346,3769,4,Wyoming

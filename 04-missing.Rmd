@@ -18,9 +18,9 @@ Also note that below graphs are missing columns regarding Antibody and Antiget t
 statedata <- read_csv("daily_state.csv", col_types = cols(date = col_date(format = "%Y%m%d")))
 statedata$addedForMargin1 <- NA
 statedata$addedForMargin2 <- NA
+statedata$addedForMargin3 <- NA
 
-statedata2 <- select(statedata, -c("checkTimeEt", "commercialScore", "dateChecked", "dateModified", "hash", "negativeRegularScore", "negativeScore", "posNeg", "positiveScore", "score", "grade",
-                                   
+statedata2 <- select(statedata, -c("checkTimeEt", "commercialScore", "dateChecked", "dateModified", "hash", "negativeRegularScore", "negativeScore", "posNeg", "positiveScore", "score", "grade", "pending",
 "positiveTestsAntibody", "negativeTestsAntibody", "totalTestsAntibody",
 "positiveTestsPeopleAntibody", "negativeTestsPeopleAntibody", "totalTestsPeopleAntibody",
 "positiveTestsAntigen","totalTestsAntigen", "positiveTestsPeopleAntigen", "totalTestsPeopleAntigen",
