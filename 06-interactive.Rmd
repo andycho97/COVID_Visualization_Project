@@ -1,3 +1,5 @@
 # Interactive component
 
+Link to the interactive plot: 
 
+Instructions for the interactive plot:

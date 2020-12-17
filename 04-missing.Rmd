@@ -8,13 +8,57 @@ library(mi)
 library(naniar)
 ```
 
-```{r, warning = FALSE}
-statedata <- read.csv('daily_state.csv')
-statedata <- as.data.frame(statedata)
-statedata2 <- select(statedata, -c("checkTimeEt", "commercialScore", "dateChecked", "dateModified", "grade", "hash", "hospitalized", "negativeIncrease", "negativeRegularScore", "negativeScore", "posNeg", "positiveScore", "score", "total"))
+For the state-level dataset, some rows are missing no data and some rows are missing significant amount of data. Fortunately, the crucial columns, including `date`, `state`, `totalTestResults`, `positiveIncrease` (in COVID-19 cases), `negativeIncrease` (in COVID-19 cases), `totalTestResultsIncrease`, `deathIncrease`, and `hospitalizedIncrease`, do not have any missing rows. 
+
+On the other hand, many of the columns related to hospitalization are ventilators have consistent missingness in data (e.g. `hospitalizedCurrently`, `inlcuCurrently`). Furthermore, the detailed columns regarding PCR tests, such as `totalTestsPeopleViral` (unique people tested at least once via PCR testing) and `positiveTestsViral` (completed PCR tests (or specimens tested) that return positive) are consistently missing. In order to have the most consistent and fully available column for testing, we will perform our analyses and visualizations using `totalTestResultsIncrease` for each state.
+
+Also note that below graphs are missing columns regarding Antibody and Antiget tests as those columns are unrelated to the scope of this project.
+
+```{r}
+statedata <- read_csv("daily_state.csv", col_types = cols(date = col_date(format = "%Y%m%d")))
+statedata$addedForMargin1 <- NA
+statedata$addedForMargin2 <- NA
+
+statedata2 <- select(statedata, -c("checkTimeEt", "commercialScore", "dateChecked", "dateModified", "hash", "negativeRegularScore", "negativeScore", "posNeg", "positiveScore", "score", "grade",
+                                   
+"positiveTestsAntibody", "negativeTestsAntibody", "totalTestsAntibody",
+"positiveTestsPeopleAntibody", "negativeTestsPeopleAntibody", "totalTestsPeopleAntibody",
+"positiveTestsAntigen","totalTestsAntigen", "positiveTestsPeopleAntigen", "totalTestsPeopleAntigen",
+"lastUpdateEt", "fips"))
 # x <- missing_data.frame(statedata2)
 # image(x)
-vis_miss(statedata2)
+vis_miss(statedata2) + 
+  labs(title = "Missing Data for State Dataset")
 ```
 
-<!-- If we sort the graph by row, it is clear that almost every state in some days has missing values in different variables. Most missing pattern does not differ a lot in type and number variables. If we sort the graph by colum, the variable with the highest number of missing values is 'totalTestPeopleAntigen'. Additionally, it's not hard to see that the variables associated with the number of individuals of positive and negative results of different tests have a large number of missing values. Most categorical variables such as "fips" and "dataQualityGrade" does not have missing values. If we sort the graph by both column and row, the distribution of the length of missing pattern becomes approximately uniform. The general shape becomes flatter. -->
+In our analyses and visualizations, we will focus on certain states that are leading in COVID-19 cases and representing different parts of the country. We can see from the below graphs that data for certain columns are often fully available or fully missing. To avoid any potential inconsistencies, we will proceed with columns mentioned above that are universally fully available for all states.
+
+```{r}
+# California
+ca_statedata2 <- statedata2[statedata2$state == 'CA',]
+
+# Florida
+fl_statedata2 <- statedata2[statedata2$state == 'FL',]
+
+# Illinois
+il_statedata2 <- statedata2[statedata2$state == 'IL',]
+
+# New York
+ny_statedata2 <- statedata2[statedata2$state == 'NY',]
+
+# Texas
+tx_statedata2 <- statedata2[statedata2$state == 'TX',]
+
+vis_miss(ca_statedata2) + 
+  labs(title = "Missing Data for California")
+vis_miss(fl_statedata2) + 
+  labs(title = "Missing Data for Florida")
+vis_miss(il_statedata2) + 
+  labs(title = "Missing Data for Illinois")
+vis_miss(ny_statedata2) + 
+  labs(title = "Missing Data for New York")
+vis_miss(tx_statedata2) + 
+  labs(title = "Missing Data for Texas")
+```
+
+<!-- If we sort the graph by row, it is clear that almost every state in some days has missing values in different variables. Most missing pattern does not differ a lot in type and number variables. If we sort the graph by colum, the variable with the highest number of missing values is 'totalTestPeopleAntigen'. Additionally, it's not hard to see that the variables associated with the number of individuals of positive and ne gative results of different tests have a large number of missing values. Most categorical variables such as "fips" and "dataQualityGrade" does not have missing values. If we sort the graph by both column and row, the distribution of the length of missing pattern becomes approximately uniform. The general shape becomes flatter. -->

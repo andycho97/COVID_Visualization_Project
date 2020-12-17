@@ -10,7 +10,7 @@ The national level data has the date on a daily basis, the number of current and
 
 Furthermore, we will research throughout the project to gather the current events data for the United States in 2020. These data points will be used in the visualizations as key dates that could have sparked an increase in the COVID-19 cases (e.g. Easter, Memorial Day, Protests, Election). 
 
-Lastly, we found the population for each state on worldometers.info and will use this information when dividing the number of cases/tests/deaths for each state by the state population to demonstrate the patterns on per capita basis. The population numbers on this project are updated until December 15, 2020.
+Lastly, we found the population for each state on https://www.worldometers.info/coronavirus/country/us and will use this information when dividing the number of cases/tests/deaths for each state by the state population to demonstrate the patterns on per capita basis. The population numbers on this project are updated until December 15, 2020.
 
 
 
