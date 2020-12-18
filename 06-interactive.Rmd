@@ -1,6 +1,7 @@
 # Interactive component
 
-Link to the interactive plot
+Links to the interactive plots:
+
 - https://vizhub.com/andycho97/2f2bc6c6289a4b47bae1bd37513b2e01?edit=files&line (based on the positive cases)
 
 - https://vizhub.com/andycho97/446751be01da4de38771e6dba04812a9?edit=files&line (based on the positive cases per 100,000 people)
