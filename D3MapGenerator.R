@@ -30,7 +30,7 @@ D3Map$seven_day_average_death_toll[D3Map$seven_day_average_death_toll < 0] <- 0
 
 # Add population data
 D3Map <- merge(D3Map, popData, by.x = 'state_name')
-D3Map$seven_day_average_Positive_percapita <- D3Map$seven_day_average_Positive / popData$population * 100000
+D3Map$seven_day_average_Positive_percapita <- round(D3Map$seven_day_average_Positive / popData$population * 100000, 2)
 
 # Output CSV
 write.csv(D3Map, 'D3Map.csv', row.names = FALSE)
