@@ -1,5 +1,9 @@
 # Interactive component
 
-Link to the interactive plot: 
+Link to the interactive plot: https://vizhub.com/andycho97/2f2bc6c6289a4b47bae1bd37513b2e01?edit=files&file=index.js&line&mode=hide
 
 Instructions for the interactive plot:
+
+-
+-
+-
